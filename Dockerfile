@@ -14,7 +14,10 @@ COPY tsconfig.build.json \
      tsconfig.json \
      entrypoint.sh \
      package.json \
-     pnpm-lock.yaml ./
+     pnpm-lock.yaml \
+     migrate-mongo-config.js ./
+
+COPY migrations ./migrations
 
 EXPOSE 3000
 

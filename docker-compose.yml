@@ -1,18 +1,17 @@
-version: "4.9"
 services:
-  db:
-    image: postgres:16.2
+  mongo:
+    image: mongo:6.0
     environment:
-      POSTGRES_USER: banking
-      POSTGRES_PASSWORD: password
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: trips
     ports:
-      - 5430:5432
+      - 27017:27017
     volumes:
-      - db-data:/var/lib/postgresql/data
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - mongo-data:/data/db
   banking-service:
     ports: 
-      - 7000:3000
+      - 8000:3000
     env_file:
       - .env.local
     build:
@@ -25,6 +24,6 @@ services:
       - ./src:/workspace/src
     restart: always
     depends_on:
-      - db
+      - mongo
 volumes:
-  db-data:
+  mongo-data:

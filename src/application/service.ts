@@ -2,6 +2,7 @@ import { Repository } from "../domain/repository.port"
 import { InsufficientReadingsError, MissingTimeReading, ValidationError } from "../domain/errors"
 import { Coordinates, Reading, Result, Service, Trip } from "../domain/service.port"
 import { Geocoding } from "../domain/geocoding.port"
+import { Logger } from "pino"
 
 
 /**
@@ -9,12 +10,17 @@ import { Geocoding } from "../domain/geocoding.port"
  */
 export class TripsService implements Service {
     /**
+     * @param logger - Servicio de geocodificacion externo
      * @param repository - Repositorio para acceder a los datos.
+     * @param geocoding - Servicio de geocodificacion externo
      */
     constructor(
+        private readonly logger: Logger,
         private readonly repository: Repository,
-        private readonly geocoding: Geocoding
-    ) { }
+        private readonly geocoding: Geocoding,
+    ) {
+        this.logger = logger.child({ classId: 'TripsService' });
+    }
     async getTrips(limit: number, offset: number, startGte?: number, startLte?: number, distanceGte?: number)
         : Promise<Result<Trip[]>> {
         if (startLte !== undefined && startGte !== undefined && startGte > startLte) {
@@ -42,6 +48,7 @@ export class TripsService implements Service {
 
         const [trips, error] = await this.repository.findTrips(limit, offset, startGte, startLte, distanceGte)
         if (error !== null) {
+            this.logger.error(error.name, error.message, error.stack)
             return [[], error]
         }
 
@@ -98,6 +105,7 @@ export class TripsService implements Service {
         }
 
         if (end.time === undefined || start.time === undefined) {
+            this.logger.error('missing time in records')
             return ['', new MissingTimeReading()]
         }
 
@@ -122,6 +130,7 @@ export class TripsService implements Service {
         if (startErr !== null) {
             [startAddress, startErr] = await this.geocoding.getAddress(roundStartLat, roundStartLon)
             if (startErr !== null) {
+                this.logger.error(startErr.name, startErr.message, startErr.stack)
                 return ['', startErr]
             }
             await this.repository.insertAddress(roundStartLat, roundStartLon, startAddress)
@@ -131,6 +140,7 @@ export class TripsService implements Service {
         if (endErr !== null) {
             [endAddress, endErr] = await this.geocoding.getAddress(roundEndLat, roundEndLon)
             if (endErr !== null) {
+                this.logger.error(endErr.name, endErr.message, endErr.stack)
                 return ['', endErr]
             }
             await this.repository.insertAddress(roundEndLat, roundEndLon, endAddress)
@@ -158,6 +168,7 @@ export class TripsService implements Service {
         let [tripId, error] = await this.repository.insertTrip(trip)
 
         if (error !== null) {
+            this.logger.error(error.name, error.message, error.stack)
             return ['', error]
         }
 

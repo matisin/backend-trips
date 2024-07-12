@@ -1,9 +1,10 @@
-import { MockRepository } from "../adapters/repository.mock"
+import { MockRepository } from "../adapters/secondary/repository.mock"
 import { InsufficientReadingsError, MissingTimeReading, ValidationError } from "../domain/errors"
 import { Coordinates, Service } from "../domain/service.port"
 import { TripsService } from "./service"
 import { addresses, correctTrip, geocodings, insufficientReadingsTrip, missingTimeTrip, trips } from "./service.test.data"
-import { MockGeocoding } from "../adapters/geocoding.mock"
+import { MockGeocoding } from "../adapters/secondary/geocoding.mock"
+import { logger } from './../logger';
 
 describe('Banking Service', () => {
     let mockRepository: MockRepository
@@ -12,7 +13,7 @@ describe('Banking Service', () => {
     beforeAll(async () => {
         mockRepository = new MockRepository(trips, addresses)
         mockGeocoding = new MockGeocoding(geocodings)
-        service = new TripsService(mockRepository, mockGeocoding)
+        service = new TripsService(logger, mockRepository, mockGeocoding)
     })
 
     beforeEach(() => {

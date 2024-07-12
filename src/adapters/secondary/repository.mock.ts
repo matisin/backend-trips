@@ -1,7 +1,7 @@
-import { Trip, Result } from '../domain/service.port'
-import { Repository } from '../domain/repository.port'
+import { Trip, Result } from '../../domain/service.port'
+import { Repository } from '../../domain/repository.port'
 import { ObjectId } from 'bson'
-import { NotFound } from '../domain/errors'
+import { NotFound } from '../../domain/errors'
 
 export type Address = {
     id: string

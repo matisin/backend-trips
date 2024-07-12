@@ -1,6 +1,6 @@
-import { Result } from '../domain/service.port'
-import { AddressNotFound } from '../domain/errors'
-import { Geocoding } from '../domain/geocoding.port'
+import { Result } from '../../domain/service.port'
+import { AddressNotFound } from '../../domain/errors'
+import { Geocoding } from '../../domain/geocoding.port'
 
 type GeocodingObj = {
     lat: number
