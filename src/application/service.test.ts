@@ -26,10 +26,7 @@ describe('Banking Service', () => {
             expect(error).toBeNull()
             expect(tripId).toBeDefined()
 
-            // console.log(mockRepository.trips)
-
             const savedTrip = mockRepository.trips.slice(-1)[0]
-
             // Verificar bounding box
             let expectedBoundingBox: Coordinates[] = [
                 { lat: -33.586038, lon: -70.567265 },

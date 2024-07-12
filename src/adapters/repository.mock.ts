@@ -74,7 +74,6 @@ export class MockRepository implements Repository {
 
     async insertTripMock(trip: Trip): Promise<Result<string>> {
         trip.id = new ObjectId().toString()
-        console.log(trip)
         this.trips.push(trip)
         return [trip.id, null]
     }
