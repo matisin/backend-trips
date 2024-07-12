@@ -19,7 +19,7 @@ export class MockGeocoding implements Geocoding {
     }
 
     async getAddressMock(lat: number, lon: number): Promise<Result<string>> {
-        for (let geocoding of this.initGeocodings) {
+        for (const geocoding of this.initGeocodings) {
             if (geocoding.lon === lon && geocoding.lat === lat) {
                 return [geocoding.address, null]
             }

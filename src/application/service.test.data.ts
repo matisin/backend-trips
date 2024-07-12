@@ -1,4 +1,4 @@
-import { Address } from '../adapters/secondary/repository.mock'
+import { Address } from '../adapters/secondary/mock.repository'
 import { Reading, Trip } from 'src/domain/service.port'
 
 export const geocodings = [

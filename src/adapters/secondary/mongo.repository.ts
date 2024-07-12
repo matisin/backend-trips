@@ -1,6 +1,6 @@
 import { Trip, Result } from '../../domain/service.port'
 import { Repository } from '../../domain/repository.port'
-import { MongoClient, Db, Collection, ObjectId } from 'mongodb'
+import { MongoClient, Db, Collection, ObjectId, Filter } from 'mongodb'
 import { InsertError, NotFound } from '../../domain/errors'
 import { Logger } from 'pino'
 import { database, up } from 'migrate-mongo'
@@ -56,7 +56,7 @@ export class MongoRepository implements Repository {
 
     async findTrips(limit = 10, offset = 0, startGte?: number, startLte?: number, distanceGte?: number): Promise<Result<Trip[]>> {
         try {
-            const query: any = {}
+            const query: Filter<Trip> = {}
             if (startGte !== undefined) query['start.time'] = { $gte: startGte }
             if (startLte !== undefined) query['start.time'] = { ...query['start.time'], $lte: startLte }
             if (distanceGte !== undefined) query.distance = { $gte: distanceGte }

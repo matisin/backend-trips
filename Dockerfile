@@ -15,6 +15,7 @@ COPY tsconfig.build.json \
      entrypoint.sh \
      package.json \
      pnpm-lock.yaml \
+     eslint.config.mjs \
      migrate-mongo-config.js ./
 
 COPY migrations ./migrations

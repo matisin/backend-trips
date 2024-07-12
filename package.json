@@ -1,13 +1,14 @@
 {
-  "name": "retorna-banking-api-xlhvlv",
+  "name": "trips-api",
   "version": "0.0.1",
-  "description": "The api for the banking system at retorna",
+  "description": "The api for trips system at jooycar",
   "main": "main.ts",
   "scripts": {
     "test": "jest --config ./jest.config.js --maxWorkers=50%",
     "build": "tsc",
     "start:dev": "tsc --watch",
-    "start:prod": "node dist/main"
+    "start:prod": "node dist/main",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" "
   },
   "keywords": [],
   "author": "",
@@ -30,22 +31,27 @@
     "testEnvironment": "node"
   },
   "devDependencies": {
+    "@eslint/js": "^9.6.0",
+    "@types/express": "^4.17.21",
     "@types/jest": "^29.5.12",
     "@types/migrate-mongo": "^10.0.4",
     "@types/pg": "^8.11.6",
+    "@typescript-eslint/eslint-plugin": "^7.16.0",
+    "@typescript-eslint/parser": "^7.16.0",
+    "eslint": "9.6.0",
+    "globals": "^15.8.0",
     "jest": "^29.7.0",
     "ts-jest": "^29.2.1",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^7.16.0"
   },
   "dependencies": {
-    "@types/express": "^4.17.21",
     "axios": "^1.7.2",
     "bson": "^6.8.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "migrate-mongo": "^11.0.0",
     "mongodb": "^6.8.0",
-    "pg": "^8.12.0",
     "pino": "^9.2.0"
   }
 }

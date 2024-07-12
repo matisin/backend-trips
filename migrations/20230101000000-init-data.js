@@ -1,6 +1,5 @@
 module.exports = {
     async up(db) {
-        // Insertar direcciones
         await db.collection('addresses').insertMany([
             {
                 _id: "5efc0d7da7076973f1515129",
@@ -10,7 +9,6 @@ module.exports = {
             }
         ]);
 
-        // Insertar viajes
         await db.collection('trips').insertMany([
             {
                 _id: "5efc0d7da7076973f1515120",
@@ -60,20 +58,16 @@ module.exports = {
                     { lat: -33.580433, lon: -70.567144 }
                 ]
             },
-            // ... (insertar los otros viajes aquí)
         ]);
 
-        // Crear índices si es necesario
         await db.collection('addresses').createIndex({ lat: 1, lon: 1 });
         await db.collection('trips').createIndex({ "start.time": 1 });
     },
 
     async down(db) {
-        // Eliminar datos
         await db.collection('addresses').deleteMany({});
         await db.collection('trips').deleteMany({});
 
-        // Eliminar índices si es necesario
         await db.collection('addresses').dropIndex({ lat: 1, lon: 1 });
         await db.collection('trips').dropIndex({ "start.time": 1 });
     }

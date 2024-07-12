@@ -4,7 +4,6 @@ import { Coordinates, Reading, Result, Service, Trip } from '../domain/service.p
 import { Geocoding } from '../domain/geocoding.port'
 import { Logger } from 'pino'
 
-
 /**
  * Implementación del servicio trips.
  */
@@ -59,7 +58,7 @@ export class TripsService implements Service {
             return ['', new InsufficientReadingsError(5)]
         }
 
-        for (let reading of readings) {
+        for (const reading of readings) {
             if (reading.time === undefined) {
                 return ['', new MissingTimeReading()]
             }
@@ -67,8 +66,8 @@ export class TripsService implements Service {
         let overspeedsCount = 0
         let overSpeed = false
 
-        let start: Reading = readings[0]
-        let end: Reading = readings.slice(-1)[0]
+        const start: Reading = readings[0]
+        const end: Reading = readings.slice(-1)[0]
 
         let distance = 0.0
 
@@ -165,7 +164,7 @@ export class TripsService implements Service {
             boundingBox
         }
 
-        let [tripId, error] = await this.repository.insertTrip(trip)
+        const [tripId, error] = await this.repository.insertTrip(trip)
 
         if (error !== null) {
             this.logger.error(error.name, error.message, error.stack)
@@ -214,4 +213,3 @@ export class TripsService implements Service {
         return Math.round(num * 1000) / 1000;
     }
 }
-

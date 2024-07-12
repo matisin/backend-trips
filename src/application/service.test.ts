@@ -1,9 +1,9 @@
-import { MockRepository } from '../adapters/secondary/repository.mock'
+import { MockRepository } from '../adapters/secondary/mock.repository'
 import { InsufficientReadingsError, MissingTimeReading, ValidationError } from '../domain/errors'
 import { Coordinates, Service } from '../domain/service.port'
 import { TripsService } from './service'
 import { addresses, correctTrip, geocodings, insufficientReadingsTrip, missingTimeTrip, trips } from './service.test.data'
-import { MockGeocoding } from '../adapters/secondary/geocoding.mock'
+import { MockGeocoding } from '../adapters/secondary/mock.geocoding'
 import pino from 'pino'
 
 const logger = pino({
@@ -33,7 +33,7 @@ describe('Banking Service', () => {
 
             const savedTrip = mockRepository.trips.slice(-1)[0]
             // Verificar bounding box
-            let expectedBoundingBox: Coordinates[] = [
+            const expectedBoundingBox: Coordinates[] = [
                 { lat: -33.586038, lon: -70.567265 },
                 { lat: -33.586038, lon: -70.566408 },
                 { lat: -33.580158, lon: -70.566408 },
@@ -132,7 +132,7 @@ describe('Banking Service', () => {
             const [trips, error] = await service.getTrips(10, 0, undefined, undefined, 8.0)
             expect(error).toBeNull()
             expect(trips.length).toBeGreaterThan(0)
-            for (let trip of trips) {
+            for (const trip of trips) {
                 expect(trip.distance).toBeGreaterThanOrEqual(8.0)
             }
         })
@@ -143,7 +143,7 @@ describe('Banking Service', () => {
             const [trips, error] = await service.getTrips(10, 0, startGte, startLte)
             expect(error).toBeNull()
             expect(trips.length).toBeGreaterThan(0)
-            for (let trip of trips) {
+            for (const trip of trips) {
                 expect(trip.start.time).toBeGreaterThanOrEqual(startGte)
                 expect(trip.start.time).toBeLessThanOrEqual(startLte)
             }

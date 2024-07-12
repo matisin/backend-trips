@@ -41,7 +41,7 @@ export class MockRepository implements Repository {
     }
 
     async insertAddresMock(lat: number, lon: number, address: string): Promise<Result<string>> {
-        let newAddress: Address = {
+        const newAddress: Address = {
             id: new ObjectId().toString(),
             lat,
             lon,
@@ -52,7 +52,7 @@ export class MockRepository implements Repository {
     }
 
     async findAddressMock(lat: number, lon: number): Promise<Result<string>> {
-        for (let address of this.addresses) {
+        for (const address of this.addresses) {
             if (lat === address.lat && lon === address.lon) {
                 return [address.address, null]
             }
