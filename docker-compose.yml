@@ -1,0 +1,30 @@
+version: "4.9"
+services:
+  db:
+    image: postgres:16.2
+    environment:
+      POSTGRES_USER: banking
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5430:5432
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+  banking-service:
+    ports: 
+      - 7000:3000
+    env_file:
+      - .env.local
+    build:
+      context: ./
+      # target: dev
+      # dockerfile: Dockerfile
+    # environment:
+       # - BUILD=dev
+    volumes:
+      - ./src:/workspace/src
+    restart: always
+    depends_on:
+      - db
+volumes:
+  db-data:
