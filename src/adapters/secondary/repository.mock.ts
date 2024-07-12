@@ -57,7 +57,7 @@ export class MockRepository implements Repository {
                 return [address.address, null]
             }
         }
-        return ["", new NotFound('address')]
+        return ['', new NotFound('address')]
     }
 
     async findTripsMock(limit = 10, offset = 0, startGte?: number, startLte?: number, distanceGte?: number)

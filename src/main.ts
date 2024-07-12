@@ -1,14 +1,18 @@
 import { MongoRepository } from './adapters/secondary/mongo.repository'
 import { TripsService } from './application/service'
 import dotenv from 'dotenv'
-import { logger } from './logger'
 import { OpenStreetMapGeocoding } from './adapters/secondary/openstreemap.geocoding'
 import express from 'express'
 import { WebController } from './adapters/primary/express'
+import pino from 'pino'
 
-dotenv.config(); // Cargar variables de entorno
+dotenv.config()
 
 let repository: MongoRepository
+
+const logger = pino({
+    level: process.env.LOG_LEVEL || 'info'
+})
 
 async function main() {
     try {
@@ -25,33 +29,33 @@ async function main() {
         // Inicializar el servicio de trips
         const tripsService = new TripsService(logger, repository, geocodingService)
 
-        const app = express();
-        app.use(express.json());
+        const app = express()
+        app.use(express.json())
 
-        const tripsController = new WebController(logger, tripsService);
-        app.use('/api', tripsController.getRouter());
+        const tripsController = new WebController(logger, tripsService)
+        app.use('/api', tripsController.getRouter())
 
-        const port = process.env.PORT || 3000;
+        const port = process.env.PORT || 3000
         app.listen(port, () => {
-            logger.info(`Server running on port ${port}`);
-        });
+            logger.info(`Server running on port ${port}`)
+        })
 
-        logger.info('Aplicación inicializada correctamente');
+        logger.info('Aplicación inicializada correctamente')
 
     } catch (error) {
-        logger.error('Error al inicializar la aplicación:', error);
-        process.exit(1);
+        logger.error('Error al inicializar la aplicación:', error)
+        process.exit(1)
     }
 }
 
 main().catch((error) => {
-    logger.error('Error no manejado:', error);
-    process.exit(1);
+    logger.error('Error no manejado:', error)
+    process.exit(1)
 })
 
 // Manejo de cierre graceful
 process.on('SIGINT', async () => {
-    logger.info('Cerrando la aplicación...');
+    logger.info('Cerrando la aplicación...')
     repository.disconnect()
-    process.exit(0);
+    process.exit(0)
 })

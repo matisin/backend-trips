@@ -1,43 +1,43 @@
-import { Address } from "../adapters/secondary/repository.mock"
-import { Reading, Trip } from "src/domain/service.port"
+import { Address } from '../adapters/secondary/repository.mock'
+import { Reading, Trip } from 'src/domain/service.port'
 
 export const geocodings = [
-    { lat: -33.580, lon: -70.567, address: "Avenida Apoquindo 300" },
-    { lat: -33.543, lon: -70.553, address: "Avenida La Florida 900" },
-    { lat: -33.450, lon: -70.673, address: "Alameda 1300" },
-    { lat: -33.419, lon: -70.604, address: "Av. Providencia 1200" },
-    { lat: -33.517, lon: -70.599, address: "Av. Vicuña Mackenna 4900" },
-    { lat: -33.457, lon: -70.664, address: "Nataniel Cox 100" },
-    { lat: -33.402, lon: -70.573, address: "Av. Las Condes 12300" },
-    { lat: -33.581, lon: -70.567, address: "Avenida Grecia 1000" },
-    { lat: -33.581, lon: -70.554, address: "Avenida El Peñón 70" },
-    { lat: -33.582, lon: -70.567, address: "Avenida Apoquindo 500" },
-    { lat: -33.583, lon: -70.566, address: "Avenida Apoquindo 700" },
-    { lat: -33.584, lon: -70.566, address: "Avenida Apoquindo 900" },
-    { lat: -33.585, lon: -70.567, address: "Avenida Apoquindo 1100" },
-    { lat: -33.586, lon: -70.567, address: "Avenida Apoquindo 1300" },
+    { lat: -33.580, lon: -70.567, address: 'Avenida Apoquindo 300' },
+    { lat: -33.543, lon: -70.553, address: 'Avenida La Florida 900' },
+    { lat: -33.450, lon: -70.673, address: 'Alameda 1300' },
+    { lat: -33.419, lon: -70.604, address: 'Av. Providencia 1200' },
+    { lat: -33.517, lon: -70.599, address: 'Av. Vicuña Mackenna 4900' },
+    { lat: -33.457, lon: -70.664, address: 'Nataniel Cox 100' },
+    { lat: -33.402, lon: -70.573, address: 'Av. Las Condes 12300' },
+    { lat: -33.581, lon: -70.567, address: 'Avenida Grecia 1000' },
+    { lat: -33.581, lon: -70.554, address: 'Avenida El Peñón 70' },
+    { lat: -33.582, lon: -70.567, address: 'Avenida Apoquindo 500' },
+    { lat: -33.583, lon: -70.566, address: 'Avenida Apoquindo 700' },
+    { lat: -33.584, lon: -70.566, address: 'Avenida Apoquindo 900' },
+    { lat: -33.585, lon: -70.567, address: 'Avenida Apoquindo 1100' },
+    { lat: -33.586, lon: -70.567, address: 'Avenida Apoquindo 1300' },
 ]
 
 export const addresses: Address[] = [
     {
-        id: "5efc0d7da7076973f1515129", lat: -33.580, lon: -70.567, address: "Avenida Apoquindo 300"
+        id: '5efc0d7da7076973f1515129', lat: -33.580, lon: -70.567, address: 'Avenida Apoquindo 300'
     }
 ]
 
 export const trips: Trip[] = [
     {
-        id: "5efc0d7da7076973f1515120",
+        id: '5efc0d7da7076973f1515120',
         start: {
             time: 1642539928000,
             lat: -33.580158,
             lon: -70.567227,
-            address: "Avenida Apoquindo 291"
+            address: 'Avenida Apoquindo 291'
         },
         end: {
             time: 1642541428000,
             lat: -33.580462,
             lon: -70.567177,
-            address: "Avenida Grecia 1043"
+            address: 'Avenida Grecia 1043'
         },
         distance: 10.4,
         duration: 1500000,
@@ -50,18 +50,18 @@ export const trips: Trip[] = [
         ]
     },
     {
-        id: "5efc0d7da7076973f1515121",
+        id: '5efc0d7da7076973f1515121',
         start: {
             time: 1642541528000,
             lat: -33.543158,
             lon: -70.553227,
-            address: "Avenida La Florida 923"
+            address: 'Avenida La Florida 923'
         },
         end: {
             time: 1642541828000,
             lat: -33.580542,
             lon: -70.554177,
-            address: "Avenida El Peñón 65"
+            address: 'Avenida El Peñón 65'
         },
         distance: 4.5,
         duration: 300000,
@@ -74,18 +74,18 @@ export const trips: Trip[] = [
         ]
     },
     {
-        id: "5efc0d7da7076973f1515122",
+        id: '5efc0d7da7076973f1515122',
         start: {
             time: 1642542000000,
             lat: -33.450229,
             lon: -70.673123,
-            address: "Alameda 1340"
+            address: 'Alameda 1340'
         },
         end: {
             time: 1642543800000,
             lat: -33.418671,
             lon: -70.604349,
-            address: "Av. Providencia 1208"
+            address: 'Av. Providencia 1208'
         },
         distance: 8.7,
         duration: 1800000,
@@ -98,18 +98,18 @@ export const trips: Trip[] = [
         ]
     },
     {
-        id: "5efc0d7da7076973f1515123",
+        id: '5efc0d7da7076973f1515123',
         start: {
             time: 1642544000000,
             lat: -33.516788,
             lon: -70.598671,
-            address: "Av. Vicuña Mackenna 4860"
+            address: 'Av. Vicuña Mackenna 4860'
         },
         end: {
             time: 1642545200000,
             lat: -33.457184,
             lon: -70.664087,
-            address: "Nataniel Cox 125"
+            address: 'Nataniel Cox 125'
         },
         distance: 12.3,
         duration: 1200000,
@@ -122,18 +122,18 @@ export const trips: Trip[] = [
         ]
     },
     {
-        id: "5efc0d7da7076973f1515124",
+        id: '5efc0d7da7076973f1515124',
         start: {
             time: 1642545500000,
             lat: -33.401944,
             lon: -70.572902,
-            address: "Av. Las Condes 12340"
+            address: 'Av. Las Condes 12340'
         },
         end: {
             time: 1642546700000,
             lat: -33.418671,
             lon: -70.604349,
-            address: "Av. Providencia 1208"
+            address: 'Av. Providencia 1208'
         },
         distance: 6.2,
         duration: 1200000,

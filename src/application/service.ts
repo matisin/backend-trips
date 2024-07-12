@@ -1,8 +1,8 @@
-import { Repository } from "../domain/repository.port"
-import { InsufficientReadingsError, MissingTimeReading, ValidationError } from "../domain/errors"
-import { Coordinates, Reading, Result, Service, Trip } from "../domain/service.port"
-import { Geocoding } from "../domain/geocoding.port"
-import { Logger } from "pino"
+import { Repository } from '../domain/repository.port'
+import { InsufficientReadingsError, MissingTimeReading, ValidationError } from '../domain/errors'
+import { Coordinates, Reading, Result, Service, Trip } from '../domain/service.port'
+import { Geocoding } from '../domain/geocoding.port'
+import { Logger } from 'pino'
 
 
 /**

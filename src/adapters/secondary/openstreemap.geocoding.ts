@@ -28,11 +28,11 @@ export class OpenStreetMapGeocoding implements Geocoding {
                 return [response.data.display_name, null]
             } else {
                 this.logger.warn(`Address not found for coordinates: ${lat}, ${lon}`)
-                return ["", new AddressNotFound(lat, lon)]
+                return ['', new AddressNotFound(lat, lon)]
             }
         } catch (error) {
             this.logger.error('Error fetching address:', error)
-            return ["", new Error('Error fetching address')]
+            return ['', new Error('Error fetching address')]
         }
     }
 }

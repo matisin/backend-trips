@@ -24,6 +24,6 @@ export class MockGeocoding implements Geocoding {
                 return [geocoding.address, null]
             }
         }
-        return ["", new AddressNotFound(lat, lon)]
+        return ['', new AddressNotFound(lat, lon)]
     }
 }

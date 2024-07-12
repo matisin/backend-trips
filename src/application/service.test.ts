@@ -1,10 +1,14 @@
-import { MockRepository } from "../adapters/secondary/repository.mock"
-import { InsufficientReadingsError, MissingTimeReading, ValidationError } from "../domain/errors"
-import { Coordinates, Service } from "../domain/service.port"
-import { TripsService } from "./service"
-import { addresses, correctTrip, geocodings, insufficientReadingsTrip, missingTimeTrip, trips } from "./service.test.data"
-import { MockGeocoding } from "../adapters/secondary/geocoding.mock"
-import { logger } from './../logger';
+import { MockRepository } from '../adapters/secondary/repository.mock'
+import { InsufficientReadingsError, MissingTimeReading, ValidationError } from '../domain/errors'
+import { Coordinates, Service } from '../domain/service.port'
+import { TripsService } from './service'
+import { addresses, correctTrip, geocodings, insufficientReadingsTrip, missingTimeTrip, trips } from './service.test.data'
+import { MockGeocoding } from '../adapters/secondary/geocoding.mock'
+import pino from 'pino'
+
+const logger = pino({
+    level: process.env.LOG_LEVEL || 'info'
+})
 
 describe('Banking Service', () => {
     let mockRepository: MockRepository
