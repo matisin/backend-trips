@@ -46,9 +46,10 @@ export class MongoRepository implements Repository {
                 this.logger.info('Sin migraciones pendientes')
                 return
             }
-            this.logger.info('Migraciones aplicadas: ', migrated)
+            this.logger.info('Migraciones aplicadas: ', migrated.length)
         } catch (error) {
-            this.logger.error('Error al inicializar la base de datos:', error.toString())
+            this.logger.error('Error al inicializar la base de datos')
+            this.logger.error(error)
             await this.client.close()
             throw error
         }

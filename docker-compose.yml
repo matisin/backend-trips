@@ -17,9 +17,6 @@ services:
     build:
       context: ./
       # target: dev
-      # dockerfile: Dockerfile
-    # environment:
-       # - BUILD=dev
     volumes:
       - ./src:/workspace/src
     restart: always
@@ -32,7 +29,7 @@ services:
       - .env.local
     build:
       context: ../frontend-trips
-      # target: dev
+      target: dev
     volumes:
       - ../frontend-trips/src:/workspace/src
       - ../frontend-trips/cypress:/workspace/cypress

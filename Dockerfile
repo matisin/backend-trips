@@ -12,7 +12,6 @@ ENV PATH="$PNPM_HOME:$PATH"
 WORKDIR /workspace
 COPY tsconfig.build.json \
      tsconfig.json \
-     entrypoint.sh \
      package.json \
      pnpm-lock.yaml \
      eslint.config.mjs \
@@ -22,18 +21,19 @@ COPY migrations ./migrations
 
 EXPOSE 3000
 
-ENTRYPOINT [ "./entrypoint.sh" ]
 
 FROM base as dev
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 COPY src ./src
 RUN pnpm build
+CMD ["pnpm","start:dev"]
 
 FROM base as production
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
 COPY --from=dev /workspace/dist ./dist
+CMD ["pnpm","start:prod"]
 
 ARG NODE_ENV
 ENV NODE_ENV ${NODE_ENV}

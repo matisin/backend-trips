@@ -35,18 +35,18 @@ export const trips: Trip[] = [
         },
         end: {
             time: 1642541428000,
-            lat: -33.580462,
-            lon: -70.567177,
-            address: 'Avenida Grecia 1043'
+            lat: -33.581462,
+            lon: -70.566177,
+            address: 'Avenida Apoquindo 1100'
         },
-        distance: 10.4,
+        distance: 1.2,
         duration: 1500000,
         overspeedsCount: 2,
         boundingBox: [
-            { lat: -33.580462, lon: -70.567177 },
-            { lat: -33.580432, lon: -70.567147 },
-            { lat: -33.580432, lon: -70.567147 },
-            { lat: -33.580433, lon: -70.567144 }
+            { lat: -33.580158, lon: -70.567227 },
+            { lat: -33.581462, lon: -70.566177 },
+            { lat: -33.581462, lon: -70.567227 },
+            { lat: -33.580158, lon: -70.566177 }
         ]
     },
     {
@@ -59,7 +59,7 @@ export const trips: Trip[] = [
         },
         end: {
             time: 1642541828000,
-            lat: -33.580542,
+            lat: -33.581542,
             lon: -70.554177,
             address: 'Avenida El Peñón 65'
         },
@@ -67,10 +67,10 @@ export const trips: Trip[] = [
         duration: 300000,
         overspeedsCount: 0,
         boundingBox: [
-            { lat: -33.580462, lon: -70.567177 },
-            { lat: -33.580432, lon: -70.567147 },
-            { lat: -33.580432, lon: -70.567147 },
-            { lat: -33.580433, lon: -70.567144 }
+            { lat: -33.543158, lon: -70.554177 },
+            { lat: -33.581542, lon: -70.553227 },
+            { lat: -33.581542, lon: -70.554177 },
+            { lat: -33.543158, lon: -70.553227 }
         ]
     },
     {
@@ -93,8 +93,8 @@ export const trips: Trip[] = [
         boundingBox: [
             { lat: -33.450229, lon: -70.673123 },
             { lat: -33.418671, lon: -70.604349 },
-            { lat: -33.434450, lon: -70.638736 },
-            { lat: -33.426340, lon: -70.621827 }
+            { lat: -33.418671, lon: -70.673123 },
+            { lat: -33.450229, lon: -70.604349 }
         ]
     },
     {
@@ -115,10 +115,10 @@ export const trips: Trip[] = [
         duration: 1200000,
         overspeedsCount: 3,
         boundingBox: [
-            { lat: -33.516788, lon: -70.598671 },
+            { lat: -33.516788, lon: -70.664087 },
+            { lat: -33.457184, lon: -70.598671 },
             { lat: -33.457184, lon: -70.664087 },
-            { lat: -33.486986, lon: -70.631379 },
-            { lat: -33.472085, lon: -70.646729 }
+            { lat: -33.516788, lon: -70.598671 }
         ]
     },
     {
@@ -139,10 +139,10 @@ export const trips: Trip[] = [
         duration: 1200000,
         overspeedsCount: 0,
         boundingBox: [
-            { lat: -33.401944, lon: -70.572902 },
+            { lat: -33.401944, lon: -70.604349 },
+            { lat: -33.418671, lon: -70.572902 },
             { lat: -33.418671, lon: -70.604349 },
-            { lat: -33.410307, lon: -70.588625 },
-            { lat: -33.414489, lon: -70.596737 }
+            { lat: -33.401944, lon: -70.572902 }
         ]
     }
 ]
