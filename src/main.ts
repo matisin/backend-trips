@@ -5,6 +5,7 @@ import { OpenStreetMapGeocoding } from './adapters/secondary/openstreemap.geocod
 import express from 'express'
 import { WebController } from './adapters/primary/express'
 import pino from 'pino'
+import cors from 'cors'
 
 dotenv.config()
 
@@ -30,6 +31,7 @@ async function main() {
         const tripsService = new TripsService(logger, repository, geocodingService)
 
         const app = express()
+        app.use(cors())
         app.use(express.json())
 
         const tripsController = new WebController(logger, tripsService)

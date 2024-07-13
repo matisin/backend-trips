@@ -25,5 +25,19 @@ services:
     restart: always
     depends_on:
       - mongo
+  trips-front:
+    ports:
+      - 5173:5173
+    env_file:
+      - .env.local
+    build:
+      context: ../frontend-trips
+      # target: dev
+    volumes:
+      - ../frontend-trips/src:/workspace/src
+      - ../frontend-trips/cypress:/workspace/cypress
+    restart: always
+    depends_on:
+      - trips-api
 volumes:
   mongo-data:
