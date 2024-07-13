@@ -97,4 +97,4 @@ frontend-trips/
 backend-trip/
 ```
 
-cuando se termine el build, deberia estar la pagina en [localhost:5173](localhost:5173)
+cuando se termine el build, deberia estar la pagina en [localhost:5173](http://localhost:5173)
