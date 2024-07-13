@@ -15,13 +15,13 @@ pnpm install
 pnpm start:dev
 ```
 
-### Type-Check, Compile and Minify for Production
+### Compile for Production
 
 ```sh
 pnpm build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+### Run Unit Tests with [Jest](https://jestjs.io/)
 
 ```sh
 pnpm test
