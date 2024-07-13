@@ -40,6 +40,8 @@ pnpm lint
 
 ### Docker y Docker compose
 
+antes de correr, se debe crear un archivo vacio .env.local en la raiz.
+
 para correr todo solo es necesario correr:
 ```sh
 docker compose up
@@ -95,3 +97,4 @@ frontend-trips/
 backend-trip/
 ```
 
+cuando se termine el build, deberia estar la pagina en [localhost:5173](localhost:5173)
